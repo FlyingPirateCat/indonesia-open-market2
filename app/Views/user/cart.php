@@ -106,6 +106,7 @@ $is_self = (logged_in()); ?>
                                                 <div class="table-responsive">
                                                     <?php $idr = "{0, number, :: currency/IDR}"; ?>
                                                     <?php $sub = $subtotal[$sellerID]; ?>
+
                                                     <?php
                                                     $ppn_rate =  11 / 100;
                                                     if ($sub < 50000000):
@@ -127,10 +128,43 @@ $is_self = (logged_in()); ?>
                                                     $buyer_poskode = $kodepos->getData('kodepos', user()->postalcode);
 
                                                     if (!empty($seller_poskode) && !empty($buyer_poskode)) {
-                                                        $seller_area = str_replace(' ', '', $seller_poskode['kabupaten']);
-                                                        $buyer_area = str_replace(' ', '', $buyer_poskode['kabupaten']);
-                                                        // berdasarkan kabupaten
-                                                        $shipping[$sellerID] = $posreguler->getTarif($seller_area, $buyer_area);
+                                                        $arrays = ['provinsi', 'kabupaten', 'kecamatan', 'kelurahan'];
+                                                        if ($totalweight[$sellerID] >= 10000) {
+                                                            // 10kg = kargo
+                                                            foreach ($arrays as $array) {
+                                                                $stempname = str_replace(' ', '', $seller_poskode[$array]);
+                                                                $btempname = str_replace(' ', '', $buyer_poskode[$array]);
+                                                                if ($poskargo->exist($stempname)) {
+                                                                    $seller_area = $stempname;
+                                                                }
+                                                                if ($poskargo->exist($btempname)) {
+                                                                    $buyer_area = $btempname;
+                                                                }
+                                                            }
+                                                            $shipping[$sellerID] = 0;
+                                                            if (!empty($seller_area) && !empty($buyer_area)):
+                                                                $ceilingweight = ceil($totalweight[$sellerID] / 1000.0);
+                                                                $shipping[$sellerID] = $poskargo->getTarif1kg($seller_area, $buyer_area);
+                                                                $shipping[$sellerID] *= $ceilingweight;
+                                                            endif;
+                                                        } else {
+                                                            // reguler
+                                                            foreach ($arrays as $array) {
+                                                                $stempname = str_replace(' ', '', $seller_poskode[$array]);
+                                                                $btempname = str_replace(' ', '', $buyer_poskode[$array]);
+                                                                if ($posreguler->exist($stempname)) {
+                                                                    $seller_area = $stempname;
+                                                                }
+                                                                if ($posreguler->exist($btempname)) {
+                                                                    $buyer_area = $btempname;
+                                                                }
+                                                            }
+                                                            $shipping[$sellerID] = 0;
+                                                            if (!empty($seller_area) && !empty($buyer_area)):
+                                                                $shipping[$sellerID] = $posreguler->getTarif($seller_area, $buyer_area);
+                                                            endif;
+                                                        }
+
                                                         // bila tidak ditemukan
                                                         $shipping[$sellerID] ??= 0;
                                                     } else {
@@ -202,11 +236,11 @@ $is_self = (logged_in()); ?>
                                                 <?php $idr = "{0, number, :: currency/IDR}"; ?>
                                                 <?php
                                                 // $subtotal = $cart->total();
-                                                $subtotal_all = array_sum(array_values($subtotal));
-                                                $pajak_all = array_sum(array_values($pajak));
+                                                $subtotal_all    = array_sum(array_values($subtotal));
+                                                $pajak_all       = array_sum(array_values($pajak));
                                                 $totalweight_all = array_sum(array_values($totalweight));
-                                                $shipping_all = array_sum(array_values($shipping));
-                                                $total_all = array_sum(array_values($total));
+                                                $shipping_all    = array_sum(array_values($shipping));
+                                                $total_all       = array_sum(array_values($total));
                                                 ?>
                                                 <table class="table">
                                                     <tr>

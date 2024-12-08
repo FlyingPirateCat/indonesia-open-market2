@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2024 at 03:40 PM
+-- Generation Time: Dec 08, 2024 at 03:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,14 +33,14 @@ CREATE TABLE `tarifposkargo` (
   `tujuan` varchar(20) DEFAULT NULL,
   `rute` varchar(20) DEFAULT NULL,
   `tarif10kg` int(20) DEFAULT NULL,
-  `tarifperkg` int(20) DEFAULT NULL
+  `tarif1kg` int(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tarifposkargo`
 --
 
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (1, 'JAKARTAPUSAT', 'JAKARTAPUSAT', '10000|10000', 30000, 3000),
 (2, 'JAKARTAPUSAT', 'JAKARTABARAT', '10000|11000', 30000, 3000),
 (3, 'JAKARTAPUSAT', 'JAKARTASELATAN', '10000|12000', 30000, 3000),
@@ -843,7 +843,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (800, 'JAKARTAUTARA', 'SRAGEN', '14000|57200', 50000, 5000),
 (801, 'JAKARTAUTARA', 'BOYOLALI', '14000|57300', 50000, 5000),
 (802, 'JAKARTAUTARA', 'KLATEN', '14000|57400', 50000, 5000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (803, 'JAKARTAUTARA', 'SUKOHARJO', '14000|57500', 50000, 5000),
 (804, 'JAKARTAUTARA', 'WONOGIRI', '14000|57600', 50000, 5000),
 (805, 'JAKARTAUTARA', 'KARANGANYAR', '14000|57700', 50000, 5000),
@@ -1681,7 +1681,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (1637, 'CIBINONG', 'INDRAMAYU', '16900|45200', 45000, 4500),
 (1638, 'CIBINONG', 'SUMEDANG', '16900|45300', 40000, 4000),
 (1639, 'CIBINONG', 'MAJALENGKA', '16900|45400', 45000, 4500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (1640, 'CIBINONG', 'KUNINGAN', '16900|45500', 45000, 4500),
 (1641, 'CIBINONG', 'TASIKMALAYA', '16900|46100', 50000, 5000),
 (1642, 'CIBINONG', 'CIAMIS', '16900|46200', 45000, 4500),
@@ -2520,7 +2520,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (2475, 'BINJAI', 'SOLO', '20700|57100', 110000, 11000),
 (2476, 'BINJAI', 'SRAGEN', '20700|57200', 120000, 12000),
 (2477, 'BINJAI', 'BOYOLALI', '20700|57300', 110000, 11000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (2478, 'BINJAI', 'KLATEN', '20700|57400', 120000, 12000),
 (2479, 'BINJAI', 'SUKOHARJO', '20700|57500', 110000, 11000),
 (2480, 'BINJAI', 'WONOGIRI', '20700|57600', 120000, 12000),
@@ -3331,7 +3331,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (3285, 'TARUTUNG', 'DUMAI', '22400|28800', 110000, 11000),
 (3286, 'TARUTUNG', 'TEMBILAHAN', '22400|29200', 125000, 12500),
 (3287, 'TARUTUNG', 'RENGAT', '22400|29300', 110000, 11000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (3288, 'TARUTUNG', 'PALEMBANG', '22400|30000', 90000, 9000),
 (3289, 'TARUTUNG', 'PRABUMULIH', '22400|31100', 105000, 10500),
 (3290, 'TARUTUNG', 'MUARAENIM', '22400|31300', 115000, 11500),
@@ -4142,7 +4142,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (4095, 'TAPAKTUAN', 'NGANJUK', '23700|64400', 235000, 23500),
 (4096, 'TAPAKTUAN', 'MALANG', '23700|65100', 225000, 22500),
 (4097, 'TAPAKTUAN', 'BLITAR', '23700|66100', 235000, 23500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (4098, 'TAPAKTUAN', 'TULUNGAGUNG', '23700|66200', 235000, 23500),
 (4099, 'TAPAKTUAN', 'PASURUAN', '23700|67100', 160000, 16000),
 (4100, 'TAPAKTUAN', 'PROBOLINGGO', '23700|67200', 240000, 24000),
@@ -4983,7 +4983,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (4935, 'PARIAMAN', 'BANTUL', '25500|55700', 100000, 10000),
 (4936, 'PARIAMAN', 'WONOSARIYOGYA', '25500|55800', 100000, 10000),
 (4937, 'PARIAMAN', 'MAGELANG', '25500|56100', 100000, 10000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (4938, 'PARIAMAN', 'TEMANGGUNG', '25500|56200', 115000, 11500),
 (4939, 'PARIAMAN', 'WONOSOBO', '25500|56300', 115000, 11500),
 (4940, 'PARIAMAN', 'SOLO', '25500|57100', 100000, 10000),
@@ -5787,7 +5787,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (5738, 'SOLOK', 'LANGSA', '27300|24400', 130000, 13000),
 (5739, 'SOLOK', 'KUTACANE', '27300|24600', 130000, 13000),
 (5740, 'SOLOK', 'PADANG', '27300|25000', 40000, 4000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (5741, 'SOLOK', 'PARIAMAN', '27300|25500', 60000, 6000),
 (5742, 'SOLOK', 'PAINAN', '27300|25600', 45000, 4500),
 (5743, 'SOLOK', 'BUKITTINGGI', '27300|26100', 60000, 6000),
@@ -6622,7 +6622,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (6572, 'TEMBILAHAN', 'PAMEKASAN', '29200|69300', 115000, 11500),
 (6573, 'TEMBILAHAN', 'SUMENEP', '29200|69400', 130000, 13000),
 (6574, 'TEMBILAHAN', 'BANJARMASIN', '29200|70000', 205000, 20500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (6575, 'TEMBILAHAN', 'BANJARBARU', '29200|70700', 205000, 20500),
 (6576, 'TEMBILAHAN', 'BALIKPAPAN', '29200|76100', 210000, 21000),
 (6577, 'TEMBILAHAN', 'DENPASAR', '29200|80000', 120000, 12000),
@@ -7462,7 +7462,7 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (7411, 'LUBUKLINGGAU', 'PEKALONGAN', '31600|51100', 100000, 10000),
 (7412, 'LUBUKLINGGAU', 'KENDAL', '31600|51300', 105000, 10500),
 (7413, 'LUBUKLINGGAU', 'TEGAL', '31600|52100', 95000, 9500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (7414, 'LUBUKLINGGAU', 'BREBES', '31600|52200', 105000, 10500),
 (7415, 'LUBUKLINGGAU', 'PEMALANG', '31600|52300', 105000, 10500),
 (7416, 'LUBUKLINGGAU', 'PURWOKERTO', '31600|53100', 100000, 10000),
@@ -8283,9 +8283,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (8231, 'JAMBI', 'PAINAN', '36000|25600', 90000, 9000),
 (8232, 'JAMBI', 'BUKITTINGGI', '36000|26100', 90000, 9000),
 (8233, 'JAMBI', 'PAYAKUMBUH', '36000|26200', 90000, 9000),
-(8234, 'JAMBI', 'LUBUKSIKAPING', '36000|26300', 90000, 9000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(8235, 'JAMBI', 'PADANGPANJANG', '36000|27100', 90000, 9000),
+(8234, 'JAMBI', 'LUBUKSIKAPING', '36000|26300', 90000, 9000),
+(8235, 'JAMBI', 'PADANGPANJANG', '36000|27100', 90000, 9000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (8236, 'JAMBI', 'SOLOK', '36000|27300', 90000, 9000),
 (8237, 'JAMBI', 'SAWAHLUNTO', '36000|27400', 90000, 9000),
 (8238, 'JAMBI', 'PEKANBARU', '36000|28000', 40000, 4000),
@@ -9122,9 +9122,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (9069, 'BANDUNG', 'BUNTOK', '40000|73700', 220000, 22000),
 (9070, 'BANDUNG', 'PANGKALANBUN', '40000|74100', 230000, 23000),
 (9071, 'BANDUNG', 'SAMPIT', '40000|74300', 130000, 13000),
-(9072, 'BANDUNG', 'SAMARINDA', '40000|75000', 160000, 16000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(9073, 'BANDUNG', 'BONTANG', '40000|75300', 175000, 17500),
+(9072, 'BANDUNG', 'SAMARINDA', '40000|75000', 160000, 16000),
+(9073, 'BANDUNG', 'BONTANG', '40000|75300', 175000, 17500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (9074, 'BANDUNG', 'TENGGARONG', '40000|75500', 160000, 16000),
 (9075, 'BANDUNG', 'BALIKPAPAN', '40000|76100', 125000, 12500),
 (9076, 'BANDUNG', 'TARAKAN', '40000|77100', 150000, 15000),
@@ -9979,9 +9979,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (9925, 'KARAWANG', 'BANGKALAN', '41300|69100', 50000, 5000),
 (9926, 'KARAWANG', 'PAMEKASAN', '41300|69300', 55000, 5500),
 (9927, 'KARAWANG', 'SUMENEP', '41300|69400', 60000, 6000),
-(9928, 'KARAWANG', 'BANJARMASIN', '41300|70000', 95000, 9500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(9929, 'KARAWANG', 'BANJARBARU', '41300|70700', 95000, 9500),
+(9928, 'KARAWANG', 'BANJARMASIN', '41300|70000', 95000, 9500),
+(9929, 'KARAWANG', 'BANJARBARU', '41300|70700', 95000, 9500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (9930, 'KARAWANG', 'KANDANGAN', '41300|71200', 170000, 17000),
 (9931, 'KARAWANG', 'AMUNTAI', '41300|71400', 180000, 18000),
 (9932, 'KARAWANG', 'BATULICIN', '41300|72200', 180000, 18000),
@@ -10800,9 +10800,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (10745, 'SUKABUMI', 'PURWOREJO', '43100|54100', 50000, 5000),
 (10746, 'SUKABUMI', 'KEBUMEN', '43100|54300', 50000, 5000),
 (10747, 'SUKABUMI', 'YOGYAKARTA', '43100|55000', 45000, 4500),
-(10748, 'SUKABUMI', 'WATESYOGYA', '43100|55600', 45000, 4500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(10749, 'SUKABUMI', 'BANTUL', '43100|55700', 45000, 4500),
+(10748, 'SUKABUMI', 'WATESYOGYA', '43100|55600', 45000, 4500),
+(10749, 'SUKABUMI', 'BANTUL', '43100|55700', 45000, 4500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (10750, 'SUKABUMI', 'WONOSARIYOGYA', '43100|55800', 45000, 4500),
 (10751, 'SUKABUMI', 'MAGELANG', '43100|56100', 50000, 5000),
 (10752, 'SUKABUMI', 'TEMANGGUNG', '43100|56200', 50000, 5000),
@@ -11644,9 +11644,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (11588, 'SUMEDANG', 'CIANJUR', '45300|43200', 55000, 5500),
 (11589, 'SUMEDANG', 'GARUT', '45300|44100', 55000, 5500),
 (11590, 'SUMEDANG', 'CIREBON', '45300|45100', 55000, 5500),
-(11591, 'SUMEDANG', 'INDRAMAYU', '45300|45200', 60000, 6000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(11592, 'SUMEDANG', 'SUMEDANG', '45300|45300', 70000, 7000),
+(11591, 'SUMEDANG', 'INDRAMAYU', '45300|45200', 60000, 6000),
+(11592, 'SUMEDANG', 'SUMEDANG', '45300|45300', 70000, 7000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (11593, 'SUMEDANG', 'MAJALENGKA', '45300|45400', 60000, 6000),
 (11594, 'SUMEDANG', 'KUNINGAN', '45300|45500', 60000, 6000),
 (11595, 'SUMEDANG', 'TASIKMALAYA', '45300|46100', 60000, 6000),
@@ -12469,9 +12469,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (12412, 'BANJAR', 'LANGSA', '46300|24400', 120000, 12000),
 (12413, 'BANJAR', 'KUTACANE', '46300|24600', 120000, 12000),
 (12414, 'BANJAR', 'PADANG', '46300|25000', 80000, 8000),
-(12415, 'BANJAR', 'PARIAMAN', '46300|25500', 110000, 11000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(12416, 'BANJAR', 'PAINAN', '46300|25600', 110000, 11000),
+(12415, 'BANJAR', 'PARIAMAN', '46300|25500', 110000, 11000),
+(12416, 'BANJAR', 'PAINAN', '46300|25600', 110000, 11000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (12417, 'BANJAR', 'BUKITTINGGI', '46300|26100', 110000, 11000),
 (12418, 'BANJAR', 'PAYAKUMBUH', '46300|26200', 110000, 11000),
 (12419, 'BANJAR', 'LUBUKSIKAPING', '46300|26300', 110000, 11000),
@@ -13303,9 +13303,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (13245, 'PEKALONGAN', 'WATAMPONE', '51100|92700', 205000, 20500),
 (13246, 'PEKALONGAN', 'KENDARI', '51100|93000', 205000, 20500),
 (13247, 'PEKALONGAN', 'PALU', '51100|94000', 165000, 16500),
-(13248, 'PEKALONGAN', 'MANADO', '51100|95000', 245000, 24500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(13249, 'PEKALONGAN', 'GORONTALO', '51100|96100', 225000, 22500),
+(13248, 'PEKALONGAN', 'MANADO', '51100|95000', 245000, 24500),
+(13249, 'PEKALONGAN', 'GORONTALO', '51100|96100', 225000, 22500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (13250, 'KENDAL', 'JAKARTAPUSAT', '51300|10000', 50000, 5000),
 (13251, 'KENDAL', 'JAKARTABARAT', '51300|11000', 50000, 5000),
 (13252, 'KENDAL', 'JAKARTASELATAN', '51300|12000', 50000, 5000),
@@ -14151,9 +14151,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (14092, 'PURWOKERTO', 'BALIKPAPAN', '53100|76100', 99000, 9),
 (14093, 'PURWOKERTO', 'TARAKAN', '53100|77100', 175000, 17500),
 (14094, 'PURWOKERTO', 'TANJUNGREDEB', '53100|77300', 425000, 42500),
-(14095, 'PURWOKERTO', 'PONTIANAK', '53100|78000', 112000, 11);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(14096, 'PURWOKERTO', 'SANGGAU', '53100|78500', 268000, 26),
+(14095, 'PURWOKERTO', 'PONTIANAK', '53100|78000', 112000, 11),
+(14096, 'PURWOKERTO', 'SANGGAU', '53100|78500', 268000, 26);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (14097, 'PURWOKERTO', 'SINTANG', '53100|78600', 268000, 26),
 (14098, 'PURWOKERTO', 'SINGKAWANG', '53100|79100', 227000, 22),
 (14099, 'PURWOKERTO', 'DENPASAR', '53100|80000', 114000, 11),
@@ -14963,9 +14963,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (14903, 'KEBUMEN', 'MAGELANG', '54300|56100', 45000, 4500),
 (14904, 'KEBUMEN', 'TEMANGGUNG', '54300|56200', 45000, 4500),
 (14905, 'KEBUMEN', 'WONOSOBO', '54300|56300', 50000, 5000),
-(14906, 'KEBUMEN', 'SOLO', '54300|57100', 40000, 4000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(14907, 'KEBUMEN', 'SRAGEN', '54300|57200', 50000, 5000),
+(14906, 'KEBUMEN', 'SOLO', '54300|57100', 40000, 4000),
+(14907, 'KEBUMEN', 'SRAGEN', '54300|57200', 50000, 5000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (14908, 'KEBUMEN', 'BOYOLALI', '54300|57300', 40000, 4000),
 (14909, 'KEBUMEN', 'KLATEN', '54300|57400', 50000, 5000),
 (14910, 'KEBUMEN', 'SUKOHARJO', '54300|57500', 40000, 4000),
@@ -15774,9 +15774,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (15713, 'MAGELANG', 'RENGAT', '56100|29300', 100000, 10000),
 (15714, 'MAGELANG', 'PALEMBANG', '56100|30000', 60000, 6000),
 (15715, 'MAGELANG', 'PRABUMULIH', '56100|31100', 70000, 7000),
-(15716, 'MAGELANG', 'MUARAENIM', '56100|31300', 80000, 8000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(15717, 'MAGELANG', 'LAHAT', '56100|31400', 85000, 8500),
+(15716, 'MAGELANG', 'MUARAENIM', '56100|31300', 80000, 8000),
+(15717, 'MAGELANG', 'LAHAT', '56100|31400', 85000, 8500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (15718, 'MAGELANG', 'LUBUKLINGGAU', '56100|31600', 105000, 10500),
 (15719, 'MAGELANG', 'BATURAJA', '56100|32100', 100000, 10000),
 (15720, 'MAGELANG', 'PANGKALPINANG', '56100|33100', 80000, 8000),
@@ -16618,9 +16618,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (16556, 'BOYOLALI', 'TARUTUNG', '57300|22400', 120000, 12000),
 (16557, 'BOYOLALI', 'SIBOLGA', '57300|22500', 120000, 12000),
 (16558, 'BOYOLALI', 'PADANGSIDEMPUAN', '57300|22700', 140000, 14000),
-(16559, 'BOYOLALI', 'BANDAACEH', '57300|23000', 80000, 8000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(16560, 'BOYOLALI', 'MEULABOH', '57300|23600', 110000, 11000),
+(16559, 'BOYOLALI', 'BANDAACEH', '57300|23000', 80000, 8000),
+(16560, 'BOYOLALI', 'MEULABOH', '57300|23600', 110000, 11000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (16561, 'BOYOLALI', 'TAPAKTUAN', '57300|23700', 130000, 13000),
 (16562, 'BOYOLALI', 'SIGLI', '57300|24100', 110000, 11000),
 (16563, 'BOYOLALI', 'LHOKSEUMAWE', '57300|24300', 110000, 11000),
@@ -17446,9 +17446,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (17383, 'KARANGANYAR', 'SANGGAU', '57700|78500', 215000, 21500),
 (17384, 'KARANGANYAR', 'SINTANG', '57700|78600', 225000, 22500),
 (17385, 'KARANGANYAR', 'SINGKAWANG', '57700|79100', 205000, 20500),
-(17386, 'KARANGANYAR', 'DENPASAR', '57700|80000', 50000, 5000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(17387, 'KARANGANYAR', 'GIANYAR', '57700|80500', 60000, 6000),
+(17386, 'KARANGANYAR', 'DENPASAR', '57700|80000', 50000, 5000),
+(17387, 'KARANGANYAR', 'GIANYAR', '57700|80500', 60000, 6000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (17388, 'KARANGANYAR', 'SINGARAJA', '57700|81100', 60000, 6000),
 (17389, 'KARANGANYAR', 'TABANAN', '57700|82100', 60000, 6000),
 (17390, 'KARANGANYAR', 'MATARAM', '57700|83000', 60000, 6000),
@@ -18284,9 +18284,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (18220, 'JEPARA', 'BLITAR', '59400|66100', 55000, 5500),
 (18221, 'JEPARA', 'TULUNGAGUNG', '59400|66200', 55000, 5500),
 (18222, 'JEPARA', 'PASURUAN', '59400|67100', 50000, 5000),
-(18223, 'JEPARA', 'PROBOLINGGO', '59400|67200', 55000, 5500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(18224, 'JEPARA', 'LUMAJANG', '59400|67300', 60000, 6000),
+(18223, 'JEPARA', 'PROBOLINGGO', '59400|67200', 55000, 5500),
+(18224, 'JEPARA', 'LUMAJANG', '59400|67300', 60000, 6000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (18225, 'JEPARA', 'JEMBER', '59400|68100', 50000, 5000),
 (18226, 'JEPARA', 'BONDOWOSO', '59400|68200', 60000, 6000),
 (18227, 'JEPARA', 'SITUBONDO', '59400|68300', 60000, 6000),
@@ -19101,9 +19101,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (19036, 'MOJOKERTO', 'BANJAR', '61300|46300', 55000, 5500),
 (19037, 'MOJOKERTO', 'SEMARANG', '61300|50000', 45000, 4500),
 (19038, 'MOJOKERTO', 'UNGARAN', '61300|50500', 45000, 4500),
-(19039, 'MOJOKERTO', 'SALATIGA', '61300|50700', 45000, 4500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(19040, 'MOJOKERTO', 'PEKALONGAN', '61300|51100', 45000, 4500),
+(19039, 'MOJOKERTO', 'SALATIGA', '61300|50700', 45000, 4500),
+(19040, 'MOJOKERTO', 'PEKALONGAN', '61300|51100', 45000, 4500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (19041, 'MOJOKERTO', 'KENDAL', '61300|51300', 50000, 5000),
 (19042, 'MOJOKERTO', 'TEGAL', '61300|52100', 50000, 5000),
 (19043, 'MOJOKERTO', 'BREBES', '61300|52200', 55000, 5500),
@@ -19945,9 +19945,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (19879, 'MADIUN', 'BENGKULU', '63100|38000', 60000, 6000),
 (19880, 'MADIUN', 'CURUP', '63100|39100', 65000, 6500),
 (19881, 'MADIUN', 'BANDUNG', '63100|40000', 45000, 4500),
-(19882, 'MADIUN', 'CIMAHI', '63100|40500', 45000, 4500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(19883, 'MADIUN', 'SOREANG', '63100|40900', 45000, 4500),
+(19882, 'MADIUN', 'CIMAHI', '63100|40500', 45000, 4500),
+(19883, 'MADIUN', 'SOREANG', '63100|40900', 45000, 4500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (19884, 'MADIUN', 'PURWAKARTA', '63100|41100', 55000, 5500),
 (19885, 'MADIUN', 'SUBANG', '63100|41200', 55000, 5500),
 (19886, 'MADIUN', 'KARAWANG', '63100|41300', 45000, 4500),
@@ -20800,9 +20800,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (20733, 'NGANJUK', 'MUARAENIM', '64400|31300', 90000, 9000),
 (20734, 'NGANJUK', 'LAHAT', '64400|31400', 95000, 9500),
 (20735, 'NGANJUK', 'LUBUKLINGGAU', '64400|31600', 110000, 11000),
-(20736, 'NGANJUK', 'BATURAJA', '64400|32100', 105000, 10500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(20737, 'NGANJUK', 'PANGKALPINANG', '64400|33100', 90000, 9000),
+(20736, 'NGANJUK', 'BATURAJA', '64400|32100', 105000, 10500),
+(20737, 'NGANJUK', 'PANGKALPINANG', '64400|33100', 90000, 9000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (20738, 'NGANJUK', 'METRO', '64400|34100', 80000, 8000),
 (20739, 'NGANJUK', 'KOTABUMI', '64400|34500', 110000, 11000),
 (20740, 'NGANJUK', 'BANDARLAMPUNG', '64400|35000', 65000, 6500),
@@ -21636,9 +21636,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (21568, 'PROBOLINGGO', 'PEMATANGSIANTAR', '67200|21100', 110000, 11000),
 (21569, 'PROBOLINGGO', 'KISARAN', '67200|21200', 115000, 11500),
 (21570, 'PROBOLINGGO', 'RANTAUPRAPAT', '67200|21400', 135000, 13500),
-(21571, 'PROBOLINGGO', 'KABANJAHE', '67200|22100', 110000, 11000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(21572, 'PROBOLINGGO', 'BALIGE', '67200|22300', 125000, 12500),
+(21571, 'PROBOLINGGO', 'KABANJAHE', '67200|22100', 110000, 11000),
+(21572, 'PROBOLINGGO', 'BALIGE', '67200|22300', 125000, 12500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (21573, 'PROBOLINGGO', 'TARUTUNG', '67200|22400', 130000, 13000),
 (21574, 'PROBOLINGGO', 'SIBOLGA', '67200|22500', 180000, 18000),
 (21575, 'PROBOLINGGO', 'PADANGSIDEMPUAN', '67200|22700', 180000, 18000),
@@ -22462,9 +22462,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (22393, 'SITUBONDO', 'SAMARINDA', '68300|75000', 110000, 11000),
 (22394, 'SITUBONDO', 'BONTANG', '68300|75300', 150000, 15000),
 (22395, 'SITUBONDO', 'TENGGARONG', '68300|75500', 120000, 12000),
-(22396, 'SITUBONDO', 'BALIKPAPAN', '68300|76100', 75000, 7500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(22397, 'SITUBONDO', 'TARAKAN', '68300|77100', 130000, 13000),
+(22396, 'SITUBONDO', 'BALIKPAPAN', '68300|76100', 75000, 7500),
+(22397, 'SITUBONDO', 'TARAKAN', '68300|77100', 130000, 13000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (22398, 'SITUBONDO', 'TANJUNGREDEB', '68300|77300', 380000, 38000),
 (22399, 'SITUBONDO', 'PONTIANAK', '68300|78000', 130000, 13000),
 (22400, 'SITUBONDO', 'SANGGAU', '68300|78500', 180000, 18000),
@@ -23277,9 +23277,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (23207, 'BANJARMASIN', 'MAGELANG', '70000|56100', 130000, 13000),
 (23208, 'BANJARMASIN', 'TEMANGGUNG', '70000|56200', 140000, 14000),
 (23209, 'BANJARMASIN', 'WONOSOBO', '70000|56300', 140000, 14000),
-(23210, 'BANJARMASIN', 'SOLO', '70000|57100', 130000, 13000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(23211, 'BANJARMASIN', 'SRAGEN', '70000|57200', 140000, 14000),
+(23210, 'BANJARMASIN', 'SOLO', '70000|57100', 130000, 13000),
+(23211, 'BANJARMASIN', 'SRAGEN', '70000|57200', 140000, 14000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (23212, 'BANJARMASIN', 'BOYOLALI', '70000|57300', 130000, 13000),
 (23213, 'BANJARMASIN', 'KLATEN', '70000|57400', 140000, 14000),
 (23214, 'BANJARMASIN', 'SUKOHARJO', '70000|57500', 130000, 13000),
@@ -24077,9 +24077,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (24006, 'PANGKALANBUN', 'SERANG', '74100|42100', 180000, 18000),
 (24007, 'PANGKALANBUN', 'PANDEGLANG', '74100|42200', 180000, 18000),
 (24008, 'PANGKALANBUN', 'RANGKASBITUNG', '74100|42300', 180000, 18000),
-(24009, 'PANGKALANBUN', 'CILEGON', '74100|42400', 180000, 18000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(24010, 'PANGKALANBUN', 'SUKABUMI', '74100|43100', 320000, 32000),
+(24009, 'PANGKALANBUN', 'CILEGON', '74100|42400', 180000, 18000),
+(24010, 'PANGKALANBUN', 'SUKABUMI', '74100|43100', 320000, 32000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (24011, 'PANGKALANBUN', 'CIANJUR', '74100|43200', 320000, 32000),
 (24012, 'PANGKALANBUN', 'GARUT', '74100|44100', 320000, 32000),
 (24013, 'PANGKALANBUN', 'CIREBON', '74100|45100', 320000, 32000),
@@ -24874,9 +24874,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (24802, 'TANJUNGSELOR', 'BALIKPAPAN', '77000|76100', 210000, 21000),
 (24803, 'TANJUNGSELOR', 'TANJUNGSELOR', '77000|77000', 50000, 5000),
 (24804, 'TANJUNGSELOR', 'TARAKAN', '77000|77100', 200000, 20000),
-(24805, 'TANJUNGSELOR', 'TANJUNGREDEB', '77000|77300', 380000, 38000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(24806, 'TARAKAN', 'JAKARTAPUSAT', '77100|10000', 170000, 17000),
+(24805, 'TANJUNGSELOR', 'TANJUNGREDEB', '77000|77300', 380000, 38000),
+(24806, 'TARAKAN', 'JAKARTAPUSAT', '77100|10000', 170000, 17000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (24807, 'TARAKAN', 'JAKARTABARAT', '77100|11000', 170000, 17000),
 (24808, 'TARAKAN', 'JAKARTASELATAN', '77100|12000', 170000, 17000),
 (24809, 'TARAKAN', 'JAKARTATIMUR', '77100|13000', 170000, 17000),
@@ -25682,9 +25682,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (25609, 'DENPASAR', 'CIANJUR', '80000|43200', 70000, 7000),
 (25610, 'DENPASAR', 'GARUT', '80000|44100', 70000, 7000),
 (25611, 'DENPASAR', 'CIREBON', '80000|45100', 60000, 6000),
-(25612, 'DENPASAR', 'INDRAMAYU', '80000|45200', 70000, 7000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(25613, 'DENPASAR', 'SUMEDANG', '80000|45300', 70000, 7000),
+(25612, 'DENPASAR', 'INDRAMAYU', '80000|45200', 70000, 7000),
+(25613, 'DENPASAR', 'SUMEDANG', '80000|45300', 70000, 7000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (25614, 'DENPASAR', 'MAJALENGKA', '80000|45400', 70000, 7000),
 (25615, 'DENPASAR', 'KUNINGAN', '80000|45500', 70000, 7000),
 (25616, 'DENPASAR', 'TASIKMALAYA', '80000|46100', 70000, 7000),
@@ -26525,9 +26525,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (26451, 'PAREPARE', 'BLITAR', '91100|66100', 125000, 12500),
 (26452, 'PAREPARE', 'TULUNGAGUNG', '91100|66200', 115000, 11500),
 (26453, 'PAREPARE', 'PASURUAN', '91100|67100', 100000, 10000),
-(26454, 'PAREPARE', 'PROBOLINGGO', '91100|67200', 100000, 10000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(26455, 'PAREPARE', 'LUMAJANG', '91100|67300', 125000, 12500),
+(26454, 'PAREPARE', 'PROBOLINGGO', '91100|67200', 100000, 10000),
+(26455, 'PAREPARE', 'LUMAJANG', '91100|67300', 125000, 12500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (26456, 'PAREPARE', 'JEMBER', '91100|68100', 100000, 10000),
 (26457, 'PAREPARE', 'BONDOWOSO', '91100|68200', 100000, 10000),
 (26458, 'PAREPARE', 'SITUBONDO', '91100|68300', 100000, 10000),
@@ -27355,9 +27355,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (27280, 'KOTAMOBAGU', 'MADIUN', '95700|63100', 230000, 23000),
 (27281, 'KOTAMOBAGU', 'NGAWI', '95700|63200', 230000, 23000),
 (27282, 'KOTAMOBAGU', 'MAGETAN', '95700|63300', 230000, 23000),
-(27283, 'KOTAMOBAGU', 'PONOROGO', '95700|63400', 230000, 23000);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(27284, 'KOTAMOBAGU', 'KEDIRI', '95700|64100', 230000, 23000),
+(27283, 'KOTAMOBAGU', 'PONOROGO', '95700|63400', 230000, 23000),
+(27284, 'KOTAMOBAGU', 'KEDIRI', '95700|64100', 230000, 23000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (27285, 'KOTAMOBAGU', 'NGANJUK', '95700|64400', 240000, 24000),
 (27286, 'KOTAMOBAGU', 'MALANG', '95700|65100', 230000, 23000),
 (27287, 'KOTAMOBAGU', 'BLITAR', '95700|66100', 240000, 24000),
@@ -28171,9 +28171,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (28095, 'Haruai', 'CIANJUR', '71572|43200', 175000, 17500),
 (28096, 'Haruai', 'GARUT', '71572|44100', 175000, 17500),
 (28097, 'Haruai', 'CIREBON', '71572|45100', 165000, 16500),
-(28098, 'Haruai', 'INDRAMAYU', '71572|45200', 175000, 17500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(28099, 'Haruai', 'SUMEDANG', '71572|45300', 175000, 17500),
+(28098, 'Haruai', 'INDRAMAYU', '71572|45200', 175000, 17500),
+(28099, 'Haruai', 'SUMEDANG', '71572|45300', 175000, 17500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (28100, 'Haruai', 'MAJALENGKA', '71572|45400', 175000, 17500),
 (28101, 'Haruai', 'KUNINGAN', '71572|45500', 175000, 17500),
 (28102, 'Haruai', 'TASIKMALAYA', '71572|46100', 175000, 17500),
@@ -28963,9 +28963,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (28886, 'Batukajang', 'PURWOKERTO', '10000|10000', 120000, 12000),
 (28887, 'Batukajang', 'CILACAP', '10000|10000', 120000, 12000),
 (28888, 'Batukajang', 'PURBALINGGA', '10000|10000', 105000, 10500),
-(28889, 'Batukajang', 'BANJARNEGARA', '10000|10000', 105000, 10500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(28890, 'Batukajang', 'PURWOREJO', '10000|10000', 100000, 10000),
+(28889, 'Batukajang', 'BANJARNEGARA', '10000|10000', 105000, 10500),
+(28890, 'Batukajang', 'PURWOREJO', '10000|10000', 100000, 10000);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (28891, 'Batukajang', 'KEBUMEN', '10000|10000', 100000, 10000),
 (28892, 'Batukajang', 'YOGYAKARTA', '10000|10000', 105000, 10500),
 (28893, 'Batukajang', 'WATESYOGYA', '10000|10000', 105000, 10500),
@@ -29773,9 +29773,9 @@ INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif
 (29695, 'Pembuanghulu', 'PROBOLINGGO', '74271|67200', 135000, 13500),
 (29696, 'Pembuanghulu', 'LUMAJANG', '74271|67300', 145000, 14500),
 (29697, 'Pembuanghulu', 'JEMBER', '74271|68100', 135000, 13500),
-(29698, 'Pembuanghulu', 'BONDOWOSO', '74271|68200', 145000, 14500);
-INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarifperkg`) VALUES
-(29699, 'Pembuanghulu', 'SITUBONDO', '74271|68300', 145000, 14500),
+(29698, 'Pembuanghulu', 'BONDOWOSO', '74271|68200', 145000, 14500),
+(29699, 'Pembuanghulu', 'SITUBONDO', '74271|68300', 145000, 14500);
+INSERT INTO `tarifposkargo` (`id`, `asal`, `tujuan`, `rute`, `tarif10kg`, `tarif1kg`) VALUES
 (29700, 'Pembuanghulu', 'BANYUWANGI', '74271|68400', 145000, 14500),
 (29701, 'Pembuanghulu', 'BANGKALAN', '74271|69100', 145000, 14500),
 (29702, 'Pembuanghulu', 'PAMEKASAN', '74271|69300', 145000, 14500),

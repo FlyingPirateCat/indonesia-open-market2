@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use CodeIgniter\Model;
+// use CodeIgniter\Model;
+use App\Models\TarifposKargoModel;
 
-class TarifposRegulerModel extends Model
+class TarifposRegulerModel extends TarifposKargoModel
 {
     protected $table      = 'tarifposreguler';
     protected $useTimestamps = false;
@@ -14,8 +15,6 @@ class TarifposRegulerModel extends Model
         'rute',
         'tarif'
     ];
-
-
     public function getTarif($asal, $tujuan)
     {
         $tarif = $this->getDataTarif($asal, $tujuan);
@@ -24,10 +23,5 @@ class TarifposRegulerModel extends Model
         endif;
 
         return $tarif['tarif'];
-    }
-
-    public function getDataTarif($asal, $tujuan)
-    {
-        return $this->where(['asal' => $asal, 'tujuan' => $tujuan])->first();
     }
 }

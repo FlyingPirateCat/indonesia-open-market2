@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ProductModel;
 use App\Models\KodeposModel;
+use App\Models\TarifposKargoModel;
 use App\Models\TarifposRegulerModel;
 use App\Models\UserModel;
 
@@ -11,7 +12,8 @@ class User extends BaseController
 {
 
 
-    protected $userModel, $productModel, $kodeposModel, $tarifposRegulerModel;
+    protected $userModel, $productModel, $kodeposModel;
+    protected $tarifposKargoModel, $tarifposRegulerModel;
     protected $db, $builder, $auth;
     public function __construct()
     {
@@ -21,6 +23,7 @@ class User extends BaseController
 
         $this->productModel = new ProductModel();
         $this->kodeposModel = new KodeposModel();
+        $this->tarifposKargoModel = new TarifposKargoModel();
         $this->tarifposRegulerModel = new TarifposRegulerModel();
         // auth
         $this->auth = service('authorization');
@@ -184,6 +187,7 @@ class User extends BaseController
         $data['cart'] = \Config\Services::cart();
         $data['users'] = $this->userModel;
         $data['kodepos'] = $this->kodeposModel;
+        $data['poskargo'] = $this->tarifposKargoModel;
         $data['posreguler'] = $this->tarifposRegulerModel;
         return view('user/cart', $data);
     }
