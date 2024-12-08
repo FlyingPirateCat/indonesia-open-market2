@@ -142,11 +142,27 @@ $is_self = (logged_in()); ?>
                                                                 }
                                                             }
                                                             $shipping[$sellerID] = 0;
-                                                            if (!empty($seller_area) && !empty($buyer_area)):
+                                                            if (!empty($seller_area) && !empty($buyer_area)) {
                                                                 $ceilingweight = ceil($totalweight[$sellerID] / 1000.0);
                                                                 $shipping[$sellerID] = $poskargo->getTarif1kg($seller_area, $buyer_area);
                                                                 $shipping[$sellerID] *= $ceilingweight;
-                                                            endif;
+                                                            } else {
+                                                                // reguler
+                                                                foreach ($arrays as $array) {
+                                                                    $stempname = str_replace(' ', '', $seller_poskode[$array]);
+                                                                    $btempname = str_replace(' ', '', $buyer_poskode[$array]);
+                                                                    if ($posreguler->exist($stempname)) {
+                                                                        $seller_area = $stempname;
+                                                                    }
+                                                                    if ($posreguler->exist($btempname)) {
+                                                                        $buyer_area = $btempname;
+                                                                    }
+                                                                }
+                                                                $shipping[$sellerID] = 0;
+                                                                if (!empty($seller_area) && !empty($buyer_area)):
+                                                                    $shipping[$sellerID] = $posreguler->getTarif($seller_area, $buyer_area);
+                                                                endif;
+                                                            }
                                                         } else {
                                                             // reguler
                                                             foreach ($arrays as $array) {
@@ -164,9 +180,6 @@ $is_self = (logged_in()); ?>
                                                                 $shipping[$sellerID] = $posreguler->getTarif($seller_area, $buyer_area);
                                                             endif;
                                                         }
-
-                                                        // bila tidak ditemukan
-                                                        $shipping[$sellerID] ??= 0;
                                                     } else {
                                                         // bila salah satu kode pos salah 
                                                         $shipping[$sellerID] = 0;
