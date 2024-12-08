@@ -3,15 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\KodeposModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Product extends BaseController
 {
-    protected $productModel, $db, $builder, $cart, $auth;
+    protected $productModel, $kodeposModel;
+    protected $db, $builder, $cart, $auth;
     public function __construct()
     {
         // productmodel
         $this->productModel = new ProductModel();
+        $this->kodeposModel = new KodeposModel();
+
         // database user
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('users');
@@ -114,6 +118,7 @@ class Product extends BaseController
     {
         $data['title']   = "Detail Produk";
         $data['product'] = $this->productModel->getProduct($slug);
+        $data['kodepos'] = $this->kodeposModel;
         $data['auth']    = $this->auth;
 
         // if url product doesn't exist
@@ -197,6 +202,15 @@ class Product extends BaseController
             return redirect()->to($destination)->withInput();
         endif;
 
+        if (!empty($temp['postalcode'])):
+            $postalcode = $this->kodeposModel->getData('kodepos', $temp['postalcode']);
+            if (empty($postalcode)):
+                session()->setFlashdata('Failure', 'Kode Pos salah');
+                $destination = '/product/' . (empty($item) ? 'create' : 'edit/' . $item['slug']);
+                return redirect()->to($destination)->withInput();
+            endif;
+        endif;
+
         foreach ($temp as $key => $value) {
             ($temp[$key]) ? ($userdata[$key] = $value) : null;
         }
@@ -209,15 +223,20 @@ class Product extends BaseController
         $slug = (!empty($item) && $name == $item['name']);
         $slug = $slug ? $item['slug'] : (dechex(gmdate('yzGis')) . '-' . url_title($name, '-', true));
 
+        $chIDuser = $this->request->getVar('id_user');
         // update data
         $temp = [];
 
         if (empty($id)) {
-            $temp['id_user']     = user_id();
-            $temp['postalcode']  = user()->postalcode;
+            $id_user             = empty($chIDuser) ? user_id() : $chIDuser;
+            $user                = $this->getUser($id_user);
+            $temp['id_user']     = $id_user;
+            $temp['postalcode']  = isset($user) ? $user['postalcode'] : '';
         } else {
-            $user                = $this->getUser($item['id_user']);
+            $id_user             = empty($chIDuser) ? $item['id_user'] : $chIDuser;
+            $user                = $this->getUser($id_user);
             $temp['id']          = $id;
+            $temp['id_user']     = $id_user;
             $temp['postalcode']  = isset($user) ? $user['postalcode'] : '';
         }
 

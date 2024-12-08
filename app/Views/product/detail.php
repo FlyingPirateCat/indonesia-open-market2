@@ -140,7 +140,9 @@ $permitted = logged_in() && $auth->hasPermission('crud-product', user_id()); ?>
                                                     <span class="card-text"><b>Kode Pos:</b></span>
                                                 </td>
                                                 <td class="align-middle bg-light bg-opacity-10">
-                                                    <?= $user['postalcode']; ?>
+                                                    <?php $pos =  $user['postalcode']; ?>
+                                                    <?php $posdata = $kodepos->getData('kodepos', $pos) ?>
+                                                    <?= $pos; ?><?= !empty($posdata) ? ' - ' . $posdata['kabupaten'] : ''; ?>
                                                 </td>
                                             </tr>
                                         </thead>

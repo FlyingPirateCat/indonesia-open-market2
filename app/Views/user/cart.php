@@ -125,59 +125,45 @@ $is_self = (logged_in()); ?>
 
                                                     <?php
                                                     $seller_poskode = $kodepos->getData('kodepos', $seller->postalcode);
-                                                    $buyer_poskode = $kodepos->getData('kodepos', user()->postalcode);
+                                                    $buyer_poskode  = $kodepos->getData('kodepos', user()->postalcode);
 
                                                     if (!empty($seller_poskode) && !empty($buyer_poskode)) {
                                                         $arrays = ['provinsi', 'kabupaten', 'kecamatan', 'kelurahan'];
+                                                        $shipping[$sellerID] = 0;
+
+                                                        foreach ($arrays as $array) {
+                                                            $stempname = str_replace(' ', '', $seller_poskode[$array]);
+                                                            $btempname = str_replace(' ', '', $buyer_poskode[$array]);
+                                                            if ($poskargo->exist($stempname)) {
+                                                                $seller_area_kargo = $stempname;
+                                                            }
+                                                            if ($poskargo->exist($btempname)) {
+                                                                $buyer_area_kargo = $btempname;
+                                                            }
+                                                            if ($posreguler->exist($stempname)) {
+                                                                $seller_area_reguler = $stempname;
+                                                            }
+                                                            if ($posreguler->exist($btempname)) {
+                                                                $buyer_area_reguler = $btempname;
+                                                            }
+                                                        }
+
                                                         if ($totalweight[$sellerID] >= 10000) {
                                                             // 10kg = kargo
-                                                            foreach ($arrays as $array) {
-                                                                $stempname = str_replace(' ', '', $seller_poskode[$array]);
-                                                                $btempname = str_replace(' ', '', $buyer_poskode[$array]);
-                                                                if ($poskargo->exist($stempname)) {
-                                                                    $seller_area = $stempname;
-                                                                }
-                                                                if ($poskargo->exist($btempname)) {
-                                                                    $buyer_area = $btempname;
-                                                                }
-                                                            }
-                                                            $shipping[$sellerID] = 0;
-                                                            if (!empty($seller_area) && !empty($buyer_area)) {
+                                                            if (!empty($seller_area_kargo) && !empty($buyer_area_kargo)) {
                                                                 $ceilingweight = ceil($totalweight[$sellerID] / 1000.0);
-                                                                $shipping[$sellerID] = $poskargo->getTarif1kg($seller_area, $buyer_area);
+                                                                $shipping[$sellerID] = $poskargo->getTarif1kg($seller_area_kargo, $buyer_area_kargo);
                                                                 $shipping[$sellerID] *= $ceilingweight;
                                                             } else {
                                                                 // reguler
-                                                                foreach ($arrays as $array) {
-                                                                    $stempname = str_replace(' ', '', $seller_poskode[$array]);
-                                                                    $btempname = str_replace(' ', '', $buyer_poskode[$array]);
-                                                                    if ($posreguler->exist($stempname)) {
-                                                                        $seller_area = $stempname;
-                                                                    }
-                                                                    if ($posreguler->exist($btempname)) {
-                                                                        $buyer_area = $btempname;
-                                                                    }
-                                                                }
-                                                                $shipping[$sellerID] = 0;
-                                                                if (!empty($seller_area) && !empty($buyer_area)):
-                                                                    $shipping[$sellerID] = $posreguler->getTarif($seller_area, $buyer_area);
+                                                                if (!empty($seller_area_reguler) && !empty($buyer_area_reguler)):
+                                                                    $shipping[$sellerID] = $posreguler->getTarif($seller_area_reguler, $buyer_area_reguler);
                                                                 endif;
                                                             }
                                                         } else {
                                                             // reguler
-                                                            foreach ($arrays as $array) {
-                                                                $stempname = str_replace(' ', '', $seller_poskode[$array]);
-                                                                $btempname = str_replace(' ', '', $buyer_poskode[$array]);
-                                                                if ($posreguler->exist($stempname)) {
-                                                                    $seller_area = $stempname;
-                                                                }
-                                                                if ($posreguler->exist($btempname)) {
-                                                                    $buyer_area = $btempname;
-                                                                }
-                                                            }
-                                                            $shipping[$sellerID] = 0;
-                                                            if (!empty($seller_area) && !empty($buyer_area)):
-                                                                $shipping[$sellerID] = $posreguler->getTarif($seller_area, $buyer_area);
+                                                            if (!empty($seller_area_reguler) && !empty($buyer_area_reguler)):
+                                                                $shipping[$sellerID] = $posreguler->getTarif($seller_area_reguler, $buyer_area_reguler);
                                                             endif;
                                                         }
                                                     } else {
@@ -239,8 +225,8 @@ $is_self = (logged_in()); ?>
                                             </h4>
                                             <address class="pl-3 ">
                                                 <strong><?= ($fullname = user()->fullname) ?? user()->username; ?></strong><br>
-                                                <i class="far fa-address-book"></i> <?= $address = user()->street_address; ?><br>
-                                                <i class="far fa-envelope"></i> <?= $postalcode = user()->postalcode; ?><br>
+                                                <?= $address = user()->street_address; ?><br>
+                                                <?= $postalcode = user()->postalcode; ?> - <?= $buyer_area_reguler ?? ''; ?><br>
                                                 <i class="fab fa-whatsapp"></i> <?= $phone = user()->phone; ?>
                                             </address>
                                         </div>
@@ -248,12 +234,13 @@ $is_self = (logged_in()); ?>
                                             <div class="table-responsive">
                                                 <?php $idr = "{0, number, :: currency/IDR}"; ?>
                                                 <?php
-                                                // $subtotal = $cart->total();
+
                                                 $subtotal_all    = array_sum(array_values($subtotal));
                                                 $pajak_all       = array_sum(array_values($pajak));
                                                 $totalweight_all = array_sum(array_values($totalweight));
                                                 $shipping_all    = array_sum(array_values($shipping));
                                                 $total_all       = array_sum(array_values($total));
+
                                                 ?>
                                                 <table class="table">
                                                     <tr>

@@ -7,7 +7,7 @@
 <?php $editAsUser  = isset($product) && user_id() == $product['id_user']; ?>
 <?php $editAsAdmin = isset($product) && in_groups('admin'); ?>
 
-<?php if ($logged && ($create || $editAsUser)): ?>
+<?php if ($logged && ($create || $editAsUser || $editAsAdmin)): ?>
     <div class="container">
         <div class="row">
             <div class="col-8 my-3 mx-auto">
@@ -146,6 +146,18 @@
                         <div class="col">
                             <div class="row">
                                 <!-- empty placeholder -->
+                                <?php if ($editAsAdmin && false): ?>
+                                    <span><label for="id_user" class="">Seller ID</label></span>
+                                    <span class="pl-1"><input
+                                            type="number"
+                                            class="form-control"
+                                            id="id_user"
+                                            name="id_user"
+                                            value="<?= (old('id_user')) ?? $create ? 0 : $product['id_user']; ?>"
+                                            min="0" />
+                                    </span>
+
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -166,114 +178,115 @@
                         </span>
                     </div>
 
-                    <?php $missingdata = []; ?>
-                    <?php $missingdata['ktp']         = empty(user()->ktp); ?>
-                    <?php $missingdata['shopname']    = empty(user()->shopname); ?>
-                    <?php $missingdata['phone']       = empty(user()->phone); ?>
-                    <?php $missingdata['address']     = empty(user()->street_address); ?>
-                    <?php $missingdata['postalcode']  = empty(user()->postalcode); ?>
+                    <?php if (true): ?>
+                        <?php $missingdata = []; ?>
+                        <?php $missingdata['ktp']         = empty(user()->ktp); ?>
+                        <?php $missingdata['shopname']    = empty(user()->shopname); ?>
+                        <?php $missingdata['phone']       = empty(user()->phone); ?>
+                        <?php $missingdata['address']     = empty(user()->street_address); ?>
+                        <?php $missingdata['postalcode']  = empty(user()->postalcode); ?>
 
-                    <?php if (!empty(array_filter(array_values($missingdata)))): ?>
-                        <div class="row mb-3 text-center">
-                            <p>Silahkan isi data dibawah ini dengan benar:</p>
-                        </div>
+                        <?php if (!empty(array_filter(array_values($missingdata)))): ?>
+                            <div class="row mb-3 text-center">
+                                <p>Silahkan isi data dibawah ini dengan benar:</p>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- bila user belum mengisi ktp -->
+                        <?php if ($missingdata['ktp']) : ?>
+                            <div class="row mb-3">
+                                <span><label for="ktp" class="">No. KTP</label></span>
+                                <span class=" pl-1"><input
+                                        type="text"
+                                        class="form-control <?= ($validation->hasError('ktp')) ? 'is-invalid' : ''; ?>"
+                                        id="ktp"
+                                        name="ktp"
+                                        maxlength="20"
+                                        value="<?= old('ktp'); ?>"
+                                        required />
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('ktp'); ?>
+                                    </div>
+                                </span>
+                            </div>
+                        <?php endif; ?>
+
+
+                        <!-- bila user belum mengisi nama toko -->
+                        <?php if ($missingdata['shopname']) : ?>
+                            <div class="row mb-3">
+                                <span><label for="shopname" class="">Kios Agen</label></span>
+                                <span class=" pl-1"><input
+                                        type="text"
+                                        class="form-control <?= ($validation->hasError('shopname')) ? 'is-invalid' : ''; ?>"
+                                        id="shopname"
+                                        name="shopname"
+                                        maxlength="30"
+                                        value="<?= old('shopname'); ?>"
+                                        required />
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('shopname'); ?>
+                                    </div>
+                                </span>
+                            </div>
+                        <?php endif; ?>
+
+
+                        <!-- bila user belum mengisi phone -->
+                        <?php if ($missingdata['phone']) : ?>
+                            <div class="row mb-3">
+                                <span><label for="phone" class="">No. WhatsApp</label></span>
+                                <span class=" pl-1"><input
+                                        type="text"
+                                        class="form-control <?= ($validation->hasError('phone')) ? 'is-invalid' : ''; ?>"
+                                        id="phone"
+                                        name="phone"
+                                        maxlength="20"
+                                        value="<?= old('phone'); ?>"
+                                        required />
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('phone'); ?>
+                                    </div>
+                                </span>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- bila user belum mengisi alamat -->
+                        <?php if ($missingdata['address']) : ?>
+                            <div class="row mb-3">
+                                <span><label for="description" class="">Alamat Penjual</label></span>
+
+                                <span class=" pl-1"><textarea
+                                        type="textbox"
+                                        class="form-control <?= ($validation->hasError('street_address')) ? 'is-invalid' : ''; ?>"
+                                        id="street_address"
+                                        name="street_address"
+                                        maxlength="255"
+                                        required><?= old('street_address'); ?></textarea>
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('street_address'); ?>
+                                    </div>
+                                </span>
+                            </div>
+                        <?php endif; ?>
+
+                        <!-- pos kode -->
+                        <?php if (empty(user()->postalcode)) : ?>
+                            <div class="row mb-3">
+                                <span><label for="postalcode" class="">Pos Kode</label></span>
+                                <span class=" pl-1"><input
+                                        type="number"
+                                        class="form-control <?= ($validation->hasError('postalcode')) ? 'is-invalid' : ''; ?>"
+                                        id="postalcode"
+                                        name="postalcode"
+                                        value="<?= (old('postalcode')) ?? $product['postalcode']; ?>" />
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('postalcode'); ?>
+                                    </div>
+                                </span>
+                            </div>
+                        <?php endif; ?>
                     <?php endif; ?>
-
-                    <!-- bila user belum mengisi ktp -->
-                    <?php if ($missingdata['ktp']) : ?>
-                        <div class="row mb-3">
-                            <span><label for="ktp" class="">No. KTP</label></span>
-                            <span class=" pl-1"><input
-                                    type="text"
-                                    class="form-control <?= ($validation->hasError('ktp')) ? 'is-invalid' : ''; ?>"
-                                    id="ktp"
-                                    name="ktp"
-                                    maxlength="20"
-                                    value="<?= old('ktp'); ?>"
-                                    required />
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('ktp'); ?>
-                                </div>
-                            </span>
-                        </div>
-                    <?php endif; ?>
-
-
-                    <!-- bila user belum mengisi nama toko -->
-                    <?php if ($missingdata['shopname']) : ?>
-                        <div class="row mb-3">
-                            <span><label for="shopname" class="">Kios Agen</label></span>
-                            <span class=" pl-1"><input
-                                    type="text"
-                                    class="form-control <?= ($validation->hasError('shopname')) ? 'is-invalid' : ''; ?>"
-                                    id="shopname"
-                                    name="shopname"
-                                    maxlength="30"
-                                    value="<?= old('shopname'); ?>"
-                                    required />
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('shopname'); ?>
-                                </div>
-                            </span>
-                        </div>
-                    <?php endif; ?>
-
-
-                    <!-- bila user belum mengisi phone -->
-                    <?php if ($missingdata['phone']) : ?>
-                        <div class="row mb-3">
-                            <span><label for="phone" class="">No. WhatsApp</label></span>
-                            <span class=" pl-1"><input
-                                    type="text"
-                                    class="form-control <?= ($validation->hasError('phone')) ? 'is-invalid' : ''; ?>"
-                                    id="phone"
-                                    name="phone"
-                                    maxlength="20"
-                                    value="<?= old('phone'); ?>"
-                                    required />
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('phone'); ?>
-                                </div>
-                            </span>
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- bila user belum mengisi alamat -->
-                    <?php if ($missingdata['address']) : ?>
-                        <div class="row mb-3">
-                            <span><label for="description" class="">Alamat Penjual</label></span>
-
-                            <span class=" pl-1"><textarea
-                                    type="textbox"
-                                    class="form-control <?= ($validation->hasError('street_address')) ? 'is-invalid' : ''; ?>"
-                                    id="street_address"
-                                    name="street_address"
-                                    maxlength="255"
-                                    required><?= old('street_address'); ?></textarea>
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('street_address'); ?>
-                                </div>
-                            </span>
-                        </div>
-                    <?php endif; ?>
-
-                    <!-- pos kode -->
-                    <?php if (empty(user()->postalcode)) : ?>
-                        <div class="row mb-3">
-                            <span><label for="postalcode" class="">Pos Kode</label></span>
-                            <span class=" pl-1"><input
-                                    type="number"
-                                    class="form-control <?= ($validation->hasError('postalcode')) ? 'is-invalid' : ''; ?>"
-                                    id="postalcode"
-                                    name="postalcode"
-                                    value="<?= (old('postalcode')) ?? $product['postalcode']; ?>" />
-                                <div class="invalid-feedback">
-                                    <?= $validation->getError('postalcode'); ?>
-                                </div>
-                            </span>
-                        </div>
-                    <?php endif; ?>
-
 
                     <button type="submit" class="btn btn-primary my-3">
                         <?= $judul; ?>

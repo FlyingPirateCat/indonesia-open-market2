@@ -60,6 +60,7 @@ class User extends BaseController
 
         $data['title'] = 'User Detail';
         $data['items'] = $this->productModel->getAllProductbyVar('id_user', $id);
+        $data['kodepos'] = $this->kodeposModel;
         $data['auth']  = $this->auth;
 
         return view('user/detail', $data);
@@ -108,6 +109,17 @@ class User extends BaseController
             }
         };
 
+        $postalcode = $this->request->getVar('postalcode');
+        if (!empty($postalcode)):
+            $postalcode = $this->kodeposModel->getData('kodepos', $postalcode);
+            if (empty($postalcode)):
+                session()->setFlashdata('Failure', 'Kode Pos salah');
+
+                return redirect()->to('/user/' . $user['id'])->withInput();
+            endif;
+        endif;
+
+
         $query = $this->builder->select('*');
         $updCount = 0;
         $updates = ['fullname', 'gender', 'birthdate', 'ktp', 'phone', 'shopname', 'street_address', 'postalcode'];
@@ -144,11 +156,16 @@ class User extends BaseController
 
     public function update_crt_profile()
     {
-        $user      = $this->getUser(user_id());
+        $user       = $this->getUser(user_id());
+        $postalcode = $this->kodeposModel->getData('kodepos', $this->request->getVar('postalcode'));
+        if (empty($postalcode)):
+            session()->setFlashdata('Failure', 'Kode Pos salah');
+            return redirect()->to('/user/cart');
+        endif;
 
-        $query = $this->builder->select('*');
+        $query   = $this->builder->select('*');
         $updCount = 0;
-        $updates = ['fullname', 'phone',  'street_address', 'postalcode'];
+        $updates  = ['fullname', 'phone',  'street_address', 'postalcode'];
         foreach ($updates as $u) {
             $upd = $this->request->getVar($u);
             if ($upd && $user[$u] != $upd):

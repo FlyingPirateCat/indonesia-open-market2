@@ -102,7 +102,12 @@
                                                 <?php if ($is_admin && false): ?>
                                                     <input type="text" class="form-control" id="email" name="email" value="<?= $user->email; ?>" />
                                                 <?php else: ?>
-                                                    <?= $user->email; ?>
+
+                                                    <?php if ($is_self): ?>
+                                                        <?= $user->email; ?>
+                                                    <?php else : ?>
+                                                        <?= empty($user->email) ? '' : 'Private'; ?>
+                                                    <?php endif; ?>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -113,12 +118,19 @@
                                                 <?php if ($changeable): ?>
                                                     <select class="form-select"
                                                         name="gender" id="gender">
-                                                        <option <?= ($user->gender == '0') ? 'selected' : '' ?> value="0">Not Specified</option>
+                                                        <option <?= ($user->gender == '0') ? 'selected' : '' ?> value="0">Tidak dirinci</option>
                                                         <option <?= ($user->gender == '1') ? 'selected' : '' ?> value="1">Laki-laki</option>
                                                         <option <?= ($user->gender == '2') ? 'selected' : '' ?> value="2">Perempuan</option>
                                                     </select>
                                                 <?php else: ?>
-                                                    <?= $user->gender; ?>
+                                                    <?php
+                                                    $gender = 'Tidak dirinci';
+                                                    if ($user->gender == 1) {
+                                                        $gender = 'Laki-Laki';
+                                                    } elseif ($user->gender == 2) {
+                                                        $gender = 'Perempuan';
+                                                    } ?>
+                                                    <?= $gender; ?>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
@@ -200,7 +212,9 @@
                                                     <input type="text" class="form-control" id="postalcode"
                                                         name="postalcode" value="<?= $user->postalcode; ?>" />
                                                 <?php else: ?>
-                                                    <?= $user->postalcode; ?>
+                                                    <?php $pos =  $user->postalcode; ?>
+                                                    <?php $posdata = $kodepos->getData('kodepos', $pos) ?>
+                                                    <?= $pos; ?><?= !empty($posdata) ? ' - ' . $posdata['kabupaten'] : ''; ?>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
