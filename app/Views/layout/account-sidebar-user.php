@@ -86,7 +86,7 @@
 <li class="nav-item">
     <a class="nav-link" href="<?= base_url('/user/' . user_id()); ?>">
         <i class="fas fa-user"></i>
-        <span>My Profile</span></a>
+        <span>Profile User</span></a>
 </li>
 
 <!-- Nav Item - My Cart -->
@@ -94,7 +94,22 @@
 <li class="nav-item">
     <a class="nav-link" href="/user/cart">
         <i class="fas fa-shopping-cart"></i>
-        <span>My Cart</span></a>
+        <span>Keranjang User</span></a>
+</li>
+
+
+<li class="nav-item">
+    <a class="nav-link" href="/user/sales/2">
+        <i class="fas fa-box"></i>
+        <span>Penjualan</span></a>
+</li>
+
+
+<!-- Nav Item - My Order -->
+<li class="nav-item">
+    <a class="nav-link" href="/user/order">
+        <i class="fas fa-box"></i>
+        <span>Pesanan User</span></a>
 </li>
 <!-- Divider -->
 <hr class="sidebar-divider">

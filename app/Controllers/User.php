@@ -164,15 +164,11 @@ class User extends BaseController
         endif;
 
         $query   = $this->builder->select('*');
-        $updCount = 0;
-        $updates  = ['fullname', 'phone',  'street_address', 'postalcode'];
-        foreach ($updates as $u) {
-            $upd = $this->request->getVar($u);
-            if ($upd && $user[$u] != $upd):
-                $query->set($u, $upd);
-                $updCount++;
-            endif;
-        }
+
+        $query->set('fullname', $this->request->getVar('fullname'));
+        $query->set('phone', $this->request->getVar('phone'));
+        $query->set('street_address', $this->request->getVar('street_address'));
+        $query->set('postalcode', $this->request->getVar('postalcode'));
 
         $query->where('id', $user['id']);
         $query->update();
@@ -203,6 +199,7 @@ class User extends BaseController
         $data['title'] = 'View Cart';
         $data['cart'] = \Config\Services::cart();
         $data['users'] = $this->userModel;
+        $data['prod'] = $this->productModel;
         $data['kodepos'] = $this->kodeposModel;
         $data['poskargo'] = $this->tarifposKargoModel;
         $data['posreguler'] = $this->tarifposRegulerModel;

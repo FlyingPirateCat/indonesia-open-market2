@@ -359,11 +359,12 @@ class Product extends BaseController
             session()->setFlashdata('Failure', "Data penjual barang ini sudah tidak ada.");
             return redirect()->to(previous_url());
         endif;
-
         foreach ($this->cart->contents() as $i):
-            if (($i['id'] == $item['id']) and $i['qty'] >= $item['stock']) :
-                session()->setFlashdata('Failure', 'Stok barang tidak cukup.');
-                return redirect()->to(previous_url());
+            if (($i['id'] == $item['id'])):
+                if ($i['qty'] >= $item['stock']) :
+                    session()->setFlashdata('Failure', 'Stok barang tidak cukup.');
+                    return redirect()->to(previous_url());
+                endif;
             endif;
         endforeach;
 

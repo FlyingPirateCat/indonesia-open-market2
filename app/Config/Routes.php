@@ -36,10 +36,22 @@ $routes->get('/product/(:any)', 'Product::detail/$1');
 $routes->get('/user', 'User::index', ['filter' => 'login']);
 $routes->get('/user/index', 'User::index', ['filter' => 'login']);
 $routes->get('/user/cart', 'User::cart', ['filter' => 'login']);
+$routes->get('/user/order', 'Order::view_order/0', ['filter' => 'login']);
+$routes->get('/user/order/(:num)', 'Order::view_order/$1', ['filter' => 'login']);
+$routes->get('/user/sales', 'Order::view_sales/0', ['filter' => 'login']);
+$routes->get('/user/sales/(:num)', 'Order::view_sales/$1', ['filter' => 'login']);
 $routes->get('/user/(:num)', 'User::detail_profile/$1');
 
 
 
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
 $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
+$routes->get('/admin/transaction', 'Order::view_transaction/0', ['filter' => 'role:admin']);
+$routes->get('/admin/transaction/(:num)', 'Order::view_transaction/$1', ['filter' => 'role:admin']);
 $routes->get('/admin/(:num)', 'Admin::detail/$1', ['filter' => 'role:admin']);
+
+
+
+$routes->post('/order/add_order', 'Order::add_order', ['filter' => 'login']);
+$routes->post('/order/add_payment_proof', 'Order::add_payment_proof', ['filter' => 'login']);
+$routes->get('/order/invoice/(:segment)', 'Order::invoice/$1', ['filter' => 'login']);

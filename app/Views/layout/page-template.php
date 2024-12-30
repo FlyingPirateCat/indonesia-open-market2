@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body id="page-top">
 
 
   <div class="min-vh-100 pb-2 header_background overflow-scroll">
@@ -21,6 +21,10 @@
     <?= $this->include('layout/account-navlogoutmodal'); ?>
   </div>
 
+
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
 
   <?= $this->include('layout/page-footer'); ?>

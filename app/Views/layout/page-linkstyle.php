@@ -38,4 +38,88 @@
             -1px 1px 0 #000,
             1px 1px 0 #000;
     }
+
+    .line {
+        border-bottom: 3px solid #000;
+        width: 100%;
+    }
+
+    .line-light {
+        width: 100%;
+        border-bottom: 1px solid #949597;
+    }
+
+    .line-end {
+        width: 100%;
+        border-bottom: 3px solid #f0c29e;
+    }
+
+    .data {
+        background-color: #dcdddf;
+        padding-left: 45px;
+    }
+
+    .data .data-box {
+        margin-top: 60px;
+    }
+
+    .data .data-box .data-separator {
+        border-top: 1px solid #949597;
+        width: 10%;
+    }
+
+
+    .without-margin {
+        margin: 0 !important;
+    }
+
+    /* To break in pages, please use this class */
+    /* https://github.com/barryvdh/laravel-snappy/issues/2 */
+    .page {
+        page-break-after: always;
+        page-break-inside: avoid;
+    }
+</style>
+
+<style>
+    .cell-1 {
+        border-collapse: separate;
+        border-spacing: 0 4em;
+        background: #fff;
+        border-bottom: 5px solid transparent;
+        /*background-color: gold;*/
+        background-clip: padding-box;
+    }
+
+    .toggle-btn {
+        width: 40px;
+        height: 21px;
+        background: grey;
+        border-radius: 50px;
+        padding: 3px;
+        cursor: pointer;
+        -webkit-transition: all 0.3s 0.1s ease-in-out;
+        -moz-transition: all 0.3s 0.1s ease-in-out;
+        -o-transition: all 0.3s 0.1s ease-in-out;
+        transition: all 0.3s 0.1s ease-in-out;
+    }
+
+    .toggle-btn>.inner-circle {
+        width: 15px;
+        height: 15px;
+        background: #fff;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s 0.1s ease-in-out;
+        -moz-transition: all 0.3s 0.1s ease-in-out;
+        -o-transition: all 0.3s 0.1s ease-in-out;
+        transition: all 0.3s 0.1s ease-in-out;
+    }
+
+    .toggle-btn.active {
+        background: blue !important;
+    }
+
+    .toggle-btn.active>.inner-circle {
+        margin-left: 19px;
+    }
 </style>
