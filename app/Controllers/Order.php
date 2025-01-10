@@ -38,6 +38,7 @@ class Order extends BaseController
         $pajak = (array)json_decode((str_replace("'", '"', $this->request->getVar('pajak'))));
         $totalweight = (array)json_decode((str_replace("'", '"', $this->request->getVar('totalweight'))));
         $shipping = (array)json_decode((str_replace("'", '"', $this->request->getVar('shipping'))));
+        $additionalcost = (array)json_decode((str_replace("'", '"', $this->request->getVar('additionalcost'))));
         $total = (array)json_decode((str_replace("'", '"', $this->request->getVar('total'))));
         $fullname = $this->request->getVar('fullname');
         $address = $this->request->getVar('address');
@@ -55,6 +56,7 @@ class Order extends BaseController
             $newdata[$sellerID]['pajak'] = $pajak[$sellerID];
             $newdata[$sellerID]['totalweight'] = $totalweight[$sellerID];
             $newdata[$sellerID]['shipping'] = $shipping[$sellerID];
+            $newdata[$sellerID]['additionalcost'] = $additionalcost[$sellerID];
             $newdata[$sellerID]['total'] = $total[$sellerID];
             $newdata[$sellerID]['receiverName'] = $fullname;
             $newdata[$sellerID]['receiverAddress'] = $address;

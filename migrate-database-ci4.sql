@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2024 at 08:17 AM
+-- Generation Time: Jan 07, 2025 at 10:50 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -176,7 +176,9 @@ INSERT INTO `auth_logins` (`id`, `ip_address`, `email`, `user_id`, `date`, `succ
 (56, '::1', 'flyingpiratecat@gmail.com', 8, '2024-12-25 12:47:20', 1),
 (57, '::1', 'dua@gmail.com', 13, '2024-12-27 04:12:01', 1),
 (58, '::1', 'flyingpiratecat@gmail.com', 8, '2024-12-27 06:31:54', 1),
-(59, '::1', 'dua@gmail.com', 13, '2024-12-27 07:05:06', 1);
+(59, '::1', 'dua@gmail.com', 13, '2024-12-27 07:05:06', 1),
+(60, '::1', 'flyingpiratecat@gmail.com', 8, '2024-12-30 05:23:49', 1),
+(61, '::1', 'dua@gmail.com', 13, '2025-01-03 08:22:29', 1);
 
 -- --------------------------------------------------------
 
@@ -286,9 +288,9 @@ CREATE TABLE `tableorder` (
 --
 
 INSERT INTO `tableorder` (`id`, `ordercode`, `id_buyer`, `id_seller`, `data_product`, `status`, `payment_proof`, `created_at`, `updated_at`) VALUES
-(2, '24351145537', 13, 12, '24351145537-13-12', 'Verifikasi', '85e2364e29019125672a74fcbf6afede.png', '2024-12-21 15:06:01', '2024-12-27 07:15:01'),
-(3, '24351145537', 13, 9, '24351145537-13-9', 'Verifikasi', '85e2364e29019125672a74fcbf6afede.png', '2024-12-21 15:06:01', '2024-12-27 07:15:01'),
-(4, '24351145537', 13, 8, '24351145537-13-8', 'Verifikasi', '85e2364e29019125672a74fcbf6afede.png', '2024-12-21 15:06:01', '2024-12-27 07:15:01'),
+(2, '24351145537', 13, 12, '24351145537-13-12', 'Sudah Dibayar', '24351145537.png', '2024-12-21 15:06:01', '2024-12-30 06:23:34'),
+(3, '24351145537', 13, 9, '24351145537-13-9', 'Sudah Dibayar', '24351145537.png', '2024-12-21 15:06:01', '2024-12-30 06:23:34'),
+(4, '24351145537', 13, 8, '24351145537-13-8', 'Sudah Dibayar', '24351145537.png', '2024-12-21 15:06:01', '2024-12-30 06:23:34'),
 (5, '24355150522', 13, 8, '24355150522-13-8', 'Belum Dibayar', NULL, '2024-12-21 15:06:01', '2024-12-21 15:06:01'),
 (6, '24355150601', 13, 8, '24355150601-13-8', 'Belum Dibayar', NULL, '2024-12-21 15:06:01', '2024-12-21 15:06:01'),
 (7, '2435961113', 13, 8, '2435961113-13-8', 'Belum Dibayar', NULL, '2024-12-25 06:11:13', '2024-12-25 06:11:13'),
@@ -311,6 +313,7 @@ CREATE TABLE `tableproduct` (
   `price` int(11) NOT NULL,
   `stock` int(11) NOT NULL DEFAULT 0,
   `weight` int(11) NOT NULL DEFAULT 0,
+  `additionalcost` int(11) NOT NULL DEFAULT 0,
   `id_user` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -320,36 +323,36 @@ CREATE TABLE `tableproduct` (
 -- Dumping data for table `tableproduct`
 --
 
-INSERT INTO `tableproduct` (`id`, `cover`, `name`, `slug`, `type`, `description`, `postalcode`, `price`, `stock`, `weight`, `id_user`, `created_at`, `updated_at`) VALUES
-(1, 'sample_pot.jpg', 'Pot Keramik', 'product01', '0', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi, sapiente.', 10250, 30000, 2, 1200, 8, '2024-02-14 00:00:00', '2024-11-22 06:27:46'),
-(2, 'sample_tas_bambu.jpg', 'Tas Anyaman Bambu', 'product02', '0', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, necessitatibus?', 10250, 250000, 1, 400, 8, '2024-02-14 00:00:00', '2024-11-22 09:38:10'),
-(3, 'sample_kain_tenun.jpg', 'Kain Tenun', 'product03', '0', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, repellendus!', 10250, 75000, 1, 0, 8, '2024-02-14 00:00:00', '2024-02-14 00:00:00'),
-(4, 'sample_patung_garuda.jpg', 'Patung Garuda Kayu', 'product04', '0', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque tenetur ut animi amet dicta accusamus?', 10250, 2000000, 1, 0, 8, '2024-02-14 00:00:00', '2024-02-14 00:00:00'),
-(5, 'sample_kalung_manik.jpg', 'Kalung Manik-manik', 'kalung-manik-manik', '0', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis placeat, laboriosam at corrupti beatae cumque!', 10250, 19550, 4, 0, 8, '2024-02-14 00:00:00', '2024-11-22 01:15:50'),
-(6, 'sample_akuarium.jpg', 'Akuarium Kaca', 'product06', '0', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, optio.', 10550, 450000, 12, 3000, 9, '2024-02-14 00:00:00', '2024-12-08 17:07:15'),
-(11, 'sample_bawang_merah.jpg', 'Bawang Merah Brebes', '5aaaa0142-bawang-merah-brebes', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, molestias!', 10250, 28000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:46:42'),
-(12, 'sample_beras_lampung.jpg', 'Beras Medium Lampung', '5aaaa018f-beras-medium-lampung', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, veniam! ', 10250, 13600, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:19'),
-(13, 'sample_gabah_cianjur.jpg', 'Gabah Cianjur', '5aaaa0196-gabah-cianjur', '1', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse, corporis! ', 10250, 7000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:26'),
-(14, 'sample_gabah_grobogan.jpg', 'Gabah Grobogan', '5aaaa019e-gabah-grobogan', '1', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, nihil. ', 10250, 7800, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:34'),
-(15, 'sample_gabah_lampung.jpg', 'Gabah Lampung', '5aaaa01a5-gabah-lampung', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, laboriosam ratione fugiat reiciendis mollitia similique. ', 10250, 8000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:41'),
-(16, 'sample_jagung_lampung.jpg', 'Jagung Lampung', 'product16', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, rem pariatur? Quidem suscipit dolorum iste, quod amet atque! ', 10250, 5100, 1, 0, 8, '2024-02-14 00:00:00', '2024-02-14 00:00:00'),
-(17, 'sample_jagung_tasikmalaya.jpg', 'Jagung Tasikmalaya', '5aaaa0258-jagung-tasikmalaya', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, fuga. ', 10250, 4600, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:49:20'),
-(18, 'sample_kakao_kendari.jpg', 'Kakao Kendari', '5aaaa024e-kakao-kendari', '1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, odio voluptatibus minus maiores ipsam suscipit ad beatae harum earum. ', 10250, 54000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:49:10'),
-(21, 'sample_ikan_tuna.jpg', 'Ikan Tuna', '5aaaa0206-ikan-tuna', '2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor sapiente rerum ex culpa quasi numquam nisi tempore exercitationem placeat, nemo maiores quo laudantium labore omnis? ', 10250, 15000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:38'),
-(22, 'sample_lobster.jpg', 'Lobster Laut Frozen', '5aaaa01ff-lobster-laut-frozen', '2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos ullam, quod unde nemo ratione quisquam, tempora eaque sapiente autem rerum repellat voluptates consequuntur ducimus nesciunt. ', 10250, 95000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:31'),
-(23, 'sample_cumi.jpg', 'Cumi Sotong Kering', '5aaaa01f7-cumi-sotong-kering', '2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dolor necessitatibus assumenda sequi error vitae quod laudantium nostrum nisi! Corporis ad maiores animi officia! Velit corrupti repellendus laudantium deserunt ab! ', 10250, 65000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:23'),
-(24, 'sample_kerang_tahu.jpg', 'Kerang Tahu Hidup', '5aaaa01ef-kerang-tahu-hidup', '2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis quos deleniti explicabo. Ipsa maxime culpa delectus, quam laboriosam modi velit, soluta perferendis cum, optio neque. Aliquam ullam maiores error et! ', 10250, 22000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:15'),
-(31, 'sample_batu_bara.jpg', 'Batu Bara', '5aaa9fb4a-batu-bara', '3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ab quibusdam dolores dicta reprehenderit ad beatae nisi veniam quaerat tempore! ', 10250, 60790, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:31:14'),
-(32, 'sample_nikel.jpg', 'Anoda Nikel 99%', '5aaa9fb62-anoda-nikel-99', '3', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam quam architecto et ipsam sed nulla a eum ut aut alias? ', 10250, 574900, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:31:38'),
-(33, 'sample_plat_tembaga.jpg', 'Plat Tmbaga Busbar 15x60x100mm', '5aaa9fc1e-plat-tmbaga-busbar-15x60x100mm', '3', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit dolorum nostrum ad deserunt enim doloremque illum, esse voluptatem architecto tempore inventore veniam iste accusamus maiores a labore rem eum voluptatibus. ', 10250, 240000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:33:26'),
-(34, 'sample_timah.jpg', 'Timah Lunak Batangan', '5aaa9fc6f-timah-lunak-batangan', '3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur maxime eius officiis aliquid expedita impedit, laborum deserunt nihil voluptatem ab. ', 10250, 40000, 1, 1000, 8, '2024-02-14 00:00:00', '2024-12-04 10:34:07'),
-(37, '49a6361761f56940f15974f27220cc67.png', 'Gem', '91015630-gem', '0', 'Gem', NULL, 100000, 1, 100, 12, '2024-11-23 08:39:20', '2024-11-23 08:39:20'),
-(38, '49a6361761f56940f15974f27220cc67.png', 'Gem2', '91016f2a-gem2', '0', 'aaaaa', 12780, 100000, 10, 100, 12, '2024-11-23 09:03:14', '2024-11-23 09:03:14'),
-(39, '49a6361761f56940f15974f27220cc67.png', 'aaaab', '91017433-aaaaa', '0', '...', 12780, 10000, 1, 100, 12, '2024-11-23 09:16:03', '2024-11-23 10:31:41'),
-(40, '49a6361761f56940f15974f27220cc67.png', 'aaa', '5aa021a13-aaa', '0', 'Gem Emas', 12780, 100000, 10, 100, 12, '2024-11-23 10:09:47', '2024-11-23 10:38:29'),
-(48, '49a6361761f56940f15974f27220cc67.png', 'saaatu', '5aa4edac1-saaatu', '0', '122222', 12780, 1000, 10, 10, 12, '2024-11-28 13:10:09', '2024-11-28 13:10:09'),
-(49, '828bc787fc46bc75dd43a5c71840e235.jpg', 'Capcay', '5aa6d4655-capcay', '4', 'Capcay sayuran', 12780, 10000, 10, 10, 12, '2024-11-30 10:34:34', '2024-11-30 12:46:29'),
-(50, 'not-found.jpg', 'Bali', '9110245a-bali', '5', 'aaa', 10250, 720000, 1, 0, 8, '2024-12-03 05:42:02', '2024-12-03 05:42:02');
+INSERT INTO `tableproduct` (`id`, `cover`, `name`, `slug`, `type`, `description`, `postalcode`, `price`, `stock`, `weight`, `additionalcost`, `id_user`, `created_at`, `updated_at`) VALUES
+(1, 'sample_pot.jpg', 'Pot Keramik', 'product01', '0', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi, sapiente.', 10250, 30000, 2, 1200, 0, 8, '2024-02-14 00:00:00', '2024-11-22 06:27:46'),
+(2, 'sample_tas_bambu.jpg', 'Tas Anyaman Bambu', 'product02', '0', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, necessitatibus?', 10250, 250000, 1, 400, 0, 8, '2024-02-14 00:00:00', '2024-11-22 09:38:10'),
+(3, 'sample_kain_tenun.jpg', 'Kain Tenun', 'product03', '0', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, repellendus!', 10250, 75000, 1, 0, 0, 8, '2024-02-14 00:00:00', '2024-02-14 00:00:00'),
+(4, 'sample_patung_garuda.jpg', 'Patung Garuda Kayu', 'product04', '0', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque tenetur ut animi amet dicta accusamus?', 10250, 2000000, 1, 0, 0, 8, '2024-02-14 00:00:00', '2024-02-14 00:00:00'),
+(5, 'sample_kalung_manik.jpg', 'Kalung Manik-manik', 'kalung-manik-manik', '0', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officiis placeat, laboriosam at corrupti beatae cumque!', 10250, 19550, 4, 0, 0, 8, '2024-02-14 00:00:00', '2024-11-22 01:15:50'),
+(6, 'sample_akuarium.jpg', 'Akuarium Kaca', 'product06', '0', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, optio.', 10550, 450000, 12, 3000, 0, 9, '2024-02-14 00:00:00', '2024-12-08 17:07:15'),
+(11, 'sample_bawang_merah.jpg', 'Bawang Merah Brebes', '5aaaa0142-bawang-merah-brebes', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, molestias!', 10250, 28000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:46:42'),
+(12, 'sample_beras_lampung.jpg', 'Beras Medium Lampung', '5aaaa018f-beras-medium-lampung', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, veniam! ', 10250, 13600, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:19'),
+(13, 'sample_gabah_cianjur.jpg', 'Gabah Cianjur', '5aaaa0196-gabah-cianjur', '1', 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse, corporis! ', 10250, 7000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:26'),
+(14, 'sample_gabah_grobogan.jpg', 'Gabah Grobogan', '5aaaa019e-gabah-grobogan', '1', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, nihil. ', 10250, 7800, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:34'),
+(15, 'sample_gabah_lampung.jpg', 'Gabah Lampung', '5aaaa01a5-gabah-lampung', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, laboriosam ratione fugiat reiciendis mollitia similique. ', 10250, 8000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:47:41'),
+(16, 'sample_jagung_lampung.jpg', 'Jagung Lampung', 'product16', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, rem pariatur? Quidem suscipit dolorum iste, quod amet atque! ', 10250, 5100, 1, 0, 0, 8, '2024-02-14 00:00:00', '2024-02-14 00:00:00'),
+(17, 'sample_jagung_tasikmalaya.jpg', 'Jagung Tasikmalaya', '5aaaa0258-jagung-tasikmalaya', '1', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, fuga. ', 10250, 4600, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:49:20'),
+(18, 'sample_kakao_kendari.jpg', 'Kakao Kendari', '5aaaa024e-kakao-kendari', '1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, odio voluptatibus minus maiores ipsam suscipit ad beatae harum earum. ', 10250, 54000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:49:10'),
+(21, 'sample_ikan_tuna.jpg', 'Ikan Tuna', '5aaaa0206-ikan-tuna', '2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor sapiente rerum ex culpa quasi numquam nisi tempore exercitationem placeat, nemo maiores quo laudantium labore omnis? ', 10250, 15000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:38'),
+(22, 'sample_lobster.jpg', 'Lobster Laut Frozen', '5aaaa01ff-lobster-laut-frozen', '2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos ullam, quod unde nemo ratione quisquam, tempora eaque sapiente autem rerum repellat voluptates consequuntur ducimus nesciunt. ', 10250, 95000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:31'),
+(23, 'sample_cumi.jpg', 'Cumi Sotong Kering', '5aaaa01f7-cumi-sotong-kering', '2', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam dolor necessitatibus assumenda sequi error vitae quod laudantium nostrum nisi! Corporis ad maiores animi officia! Velit corrupti repellendus laudantium deserunt ab! ', 10250, 65000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:23'),
+(24, 'sample_kerang_tahu.jpg', 'Kerang Tahu Hidup', '5aaaa01ef-kerang-tahu-hidup', '2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis quos deleniti explicabo. Ipsa maxime culpa delectus, quam laboriosam modi velit, soluta perferendis cum, optio neque. Aliquam ullam maiores error et! ', 10250, 22000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:48:15'),
+(31, 'sample_batu_bara.jpg', 'Batu Bara', '5aaa9fb4a-batu-bara', '3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ab quibusdam dolores dicta reprehenderit ad beatae nisi veniam quaerat tempore! ', 10250, 60790, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:31:14'),
+(32, 'sample_nikel.jpg', 'Anoda Nikel 99%', '5aaa9fb62-anoda-nikel-99', '3', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam quam architecto et ipsam sed nulla a eum ut aut alias? ', 10250, 574900, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:31:38'),
+(33, 'sample_plat_tembaga.jpg', 'Plat Tmbaga Busbar 15x60x100mm', '5aaa9fc1e-plat-tmbaga-busbar-15x60x100mm', '3', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit dolorum nostrum ad deserunt enim doloremque illum, esse voluptatem architecto tempore inventore veniam iste accusamus maiores a labore rem eum voluptatibus. ', 10250, 240000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:33:26'),
+(34, 'sample_timah.jpg', 'Timah Lunak Batangan', '5aaa9fc6f-timah-lunak-batangan', '3', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur maxime eius officiis aliquid expedita impedit, laborum deserunt nihil voluptatem ab. ', 10250, 40000, 1, 1000, 0, 8, '2024-02-14 00:00:00', '2024-12-04 10:34:07'),
+(37, '49a6361761f56940f15974f27220cc67.png', 'Gem', '91015630-gem', '0', 'Gem', NULL, 100000, 1, 100, 0, 12, '2024-11-23 08:39:20', '2024-11-23 08:39:20'),
+(38, '49a6361761f56940f15974f27220cc67.png', 'Gem2', '91016f2a-gem2', '0', 'aaaaa', 12780, 100000, 10, 100, 0, 12, '2024-11-23 09:03:14', '2024-11-23 09:03:14'),
+(39, '49a6361761f56940f15974f27220cc67.png', 'aaaab', '91017433-aaaaa', '0', '...', 12780, 10000, 1, 100, 0, 12, '2024-11-23 09:16:03', '2024-11-23 10:31:41'),
+(40, '49a6361761f56940f15974f27220cc67.png', 'aaa', '5aa021a13-aaa', '0', 'Gem Emas', 12780, 100000, 10, 100, 0, 12, '2024-11-23 10:09:47', '2024-11-23 10:38:29'),
+(48, '49a6361761f56940f15974f27220cc67.png', 'saaatu', '5aa4edac1-saaatu', '0', '122222', 12780, 1000, 10, 10, 0, 12, '2024-11-28 13:10:09', '2024-11-28 13:10:09'),
+(49, '828bc787fc46bc75dd43a5c71840e235.jpg', 'Capcay', '5aa6d4655-capcay', '4', 'Capcay sayuran', 12780, 10000, 10, 10, 0, 12, '2024-11-30 10:34:34', '2024-11-30 12:46:29'),
+(50, 'not-found.jpg', 'Bali', '9110245a-bali', '5', 'aaa', 10250, 720000, 1, 0, 0, 8, '2024-12-03 05:42:02', '2024-12-03 05:42:02');
 
 -- --------------------------------------------------------
 
@@ -390,7 +393,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `username`, `fullname`, `gender`, `birthdate`, `ktp`, `phone`, `shopname`, `user_image`, `street_address`, `postalcode`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (8, 'flyingpiratecat@gmail.com', 'Superadmin', 'Kampreto', 1, '2011-11-04', '1234567890123456', '122', 'Toko Piring Terbang', '49a6361761f56940f15974f27220cc67.png', 'Jl Antah Berantah', 16416, '$2y$10$z2xWvDcjn.ahJfjBErxWn.luBmdP6NfzaSYeZ64GwEg1Hpg3JYB7G', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2024-11-20 15:31:25', '2024-11-20 15:31:25', NULL),
-(9, 'sweeper@gmayl.com', 'Sweeper', 'Sweeper Gladioso', 1, '1992-11-12', '1233457889675679', '56564565445656', 'Toko Piring Terbang', 'bda0e84e857f2a7ad6943b69d2ac5377.png', 'Jalan Antah Berantah 2', 10550, '$2y$10$yJmiw6gA7Le6dOkrdkwpduafs15HL.SAhThtxuARSQ7QfYFSQOy1K', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2024-11-21 00:07:10', '2024-11-21 00:07:10', NULL),
+(9, 'sweeper@gmayl.com', 'Sweeper', 'Sweeper Gladioso', 1, '1992-11-12', '1233457889675679', '56564565445656', 'Toko Kemangi', 'bda0e84e857f2a7ad6943b69d2ac5377.png', 'Jalan Antah Berantah 2', 10550, '$2y$10$yJmiw6gA7Le6dOkrdkwpduafs15HL.SAhThtxuARSQ7QfYFSQOy1K', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2024-11-21 00:07:10', '2024-11-21 00:07:10', NULL),
 (12, 'satu@gmail.com', 'Satu', 'Saaaa', 0, NULL, '1234567890123456', '123', 'Toko Kencana', 'profile_default.svg', 'Jl Antah Berantah 4', 12780, '$2y$10$QP8sMfnEad6jbIeT3927zu5OLqMXXjg0pckjyiTcs2hwwoI1/90NG', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2024-11-23 08:36:42', '2024-11-23 08:36:42', NULL),
 (13, 'dua@gmail.com', 'Dua', 'User', 0, NULL, NULL, '1243331', NULL, 'profile_default.svg', 'Jalan Antah Berantah 4 RT3 RW7', 10130, '$2y$10$qgPtwxzw43/K/7t5.ukM8OZbEwj9Jiq2TXdwvrFw9wrtPyBVmlmiK', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2024-11-24 12:48:12', '2024-11-24 12:48:12', NULL);
 
@@ -505,7 +508,7 @@ ALTER TABLE `auth_groups`
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions`

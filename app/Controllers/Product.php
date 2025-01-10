@@ -380,6 +380,7 @@ class Product extends BaseController
                 'stock' => $item['stock'],
                 'postalcode' => $item['postalcode'],
                 'seller_id' => $item['id_user'],
+                'additionalcost' => $item['additionalcost'],
             )
         ));
         session()->setFlashdata('Success', 'Barang berhasil ditambahkan ke keranjang belanja anda.');

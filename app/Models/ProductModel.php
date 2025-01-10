@@ -19,6 +19,7 @@ class ProductModel extends Model
         'weight',
         'stock',
         'id_user',
+        'additionalcost',
     ];
 
 

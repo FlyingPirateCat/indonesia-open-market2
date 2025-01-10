@@ -123,6 +123,7 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                     <?php $products = []; ?>
                                     <?php $totalweight = []; ?>
                                     <?php $subtotal = []; ?>
+                                    <?php $additionalcost = []; ?>
                                     <?php foreach ($agen as $sellerID => $items) : ?>
 
                                         <?php $seller[$sellerID] = $users->find($sellerID) ?>
@@ -131,6 +132,7 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                         <?php
                                         $totalweight[$sellerID] = 0;
                                         $subtotal[$sellerID] = 0;
+                                        $additionalcost[$sellerID] = 0;
                                         $products[$sellerID] = $items;
                                         ?>
 
@@ -149,6 +151,7 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                                 <?php foreach ($products[$sellerID] as $key => $value) : ?>
                                                     <?php $totalweight[$sellerID] += $value['qty'] * $value['options']['weight']; ?>
                                                     <?php $subtotal[$sellerID] += $value['subtotal']; ?>
+                                                    <?php $additionalcost[$sellerID] += $value['qty'] * $value['options']['additionalcost']; ?>
                                                     <tr>
                                                         <td>
                                                             <input type="number" class="form-control"
@@ -185,7 +188,7 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                                     $shipping[$sellerID] = calculateShipment($seller_poskode, $buyer_poskode, $totalweight[$sellerID]);
                                                     ?>
                                                     <!-- Menghitung Total -->
-                                                    <?php $total[$sellerID] = $sub + $pajak[$sellerID] + $shipping[$sellerID]; ?>
+                                                    <?php $total[$sellerID] = $sub + $pajak[$sellerID] + $shipping[$sellerID] + $additionalcost[$sellerID]; ?>
                                                     <table class="table">
                                                         <tr>
                                                             <th style="width:50%">Subtotal Produk:</th>
@@ -202,6 +205,10 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                                         <tr>
                                                             <th>Ongkos Kirim:</th>
                                                             <td><?= msgfmt_format_message("id", $idr, array($shipping[$sellerID])); ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Biaya Tambahan:</th>
+                                                            <td><?= msgfmt_format_message("id", $idr, array($additionalcost[$sellerID])); ?></td>
                                                         </tr>
                                                         <tr>
                                                             <th>Total:</th>
@@ -254,7 +261,7 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                             $totalweight_all = array_sum(array_values($totalweight));
                                             $shipping_all    = array_sum(array_values($shipping));
                                             $total_all       = array_sum(array_values($total));
-
+                                            $additionalcost_all = array_sum(array_values($additionalcost));
 
                                             // echo json_encode($products);
                                             // $path = ($_SERVER['DOCUMENT_ROOT'] . '/eur_countries_array.json');
@@ -281,6 +288,10 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                                 <tr>
                                                     <th>Total Ongkos Kirim:</th>
                                                     <td><?= msgfmt_format_message("id", $idr, array($shipping_all)); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total Biaya Tambahan:</th>
+                                                    <td><?= msgfmt_format_message("id", $idr, array($additionalcost_all)); ?></td>
                                                 </tr>
                                                 <tr>
                                                     <th>Total Keseluruhan:</th>
@@ -313,6 +324,7 @@ function calculateShipment($seller_poskode, $buyer_poskode, $totalweight)
                                                 <input type="hidden" name="pajak" value="<?= str_replace('"', "'", json_encode($pajak)); ?>">
                                                 <input type="hidden" name="totalweight" value="<?= str_replace('"', "'", json_encode($totalweight)); ?>">
                                                 <input type="hidden" name="shipping" value="<?= str_replace('"', "'", json_encode($shipping)); ?>">
+                                                <input type="hidden" name="additionalcost" value="<?= str_replace('"', "'", json_encode($additionalcost)); ?>">
                                                 <input type="hidden" name="total" value="<?= str_replace('"', "'", json_encode($total)); ?>">
                                                 <input type="hidden" name="fullname" value="<?= $fullname; ?>">
                                                 <input type="hidden" name="address" value="<?= $address; ?>">

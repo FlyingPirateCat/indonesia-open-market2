@@ -132,6 +132,7 @@
                     $pajak = $orders[$key]['pajak'];
                     $totalweight = $orders[$key]['totalweight'];
                     $shipping = $orders[$key]['shipping'];
+                    $additionalcost = $orders[$key]['additionalcost'] ?? 0;
                     $total = $orders[$key]['total'];
                     ?>
 
@@ -146,7 +147,42 @@
                         </div>
                         <div class="col-3 text-right font-weight-bold notranslate"><?= msgfmt_format_message("id", $idr, array($subtotal)); ?></div>
                     </div>
+                    <div class="row mt-2 list-content">
+                        <div class="col-9">
+                            TAXES
+                        </div>
+                        <div class="col-3 text-right notranslate"><?= msgfmt_format_message("id", $idr, array($pajak)); ?></div>
+                    </div>
 
+                    <div class="row mt-2 list-content">
+                        <div class="col-7">
+                            WEIGHT
+                        </div>
+                        <div class="col-5 text-right"><?= $totalweight; ?> gr</div>
+                    </div>
+                    <div class="row mt-2 list-content">
+                        <div class="col-7">
+                            SHIPPING
+                        </div>
+                        <div class="col-5 text-right notranslate"><?= msgfmt_format_message("id", $idr, array($shipping)); ?></div>
+                    </div>
+                    <div class="row mt-2 list-content">
+                        <div class="col-7">
+                            ADDITIONAL COSTS
+                        </div>
+                        <div class="col-5 text-right notranslate"><?= msgfmt_format_message("id", $idr, array($additionalcost)); ?></div>
+                        <div class="col-12 my-2">
+                            <div class="line-end"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-2 list-content">
+                        <div class="col-7">
+                            <h4 class="font-weight-bold">TOTAL</h3>
+                        </div>
+                        <div class="col-5 text-right">
+                            <h4 class="font-weight-bold notranslate"><?= msgfmt_format_message("id", $idr, array($total)); ?></h3>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -213,6 +249,7 @@
                 $pajak = array_column($orders, 'pajak');
                 $totalweight = array_column($orders, 'totalweight');
                 $shipping = array_column($orders, 'shipping');
+                $additionalcost = array_column($orders, 'additionalcost');
                 $total = array_column($orders, 'total');
                 ?>
 
@@ -221,6 +258,7 @@
                 $pajak_all       = array_sum(array_values($pajak));
                 $totalweight_all = array_sum(array_values($totalweight));
                 $shipping_all    = array_sum(array_values($shipping));
+                $additionalcost_all    = array_sum(array_values($additionalcost));
                 $total_all       = array_sum(array_values($total));
                 ?>
                 <div class="row">
@@ -236,21 +274,27 @@
                 </div>
                 <div class="row mt-2 list-content">
                     <div class="col-7">
-                        Taxes
+                        Total Taxes
                     </div>
                     <div class="col-5 text-right notranslate"><?= msgfmt_format_message("id", $idr, array($pajak_all)); ?></div>
                 </div>
                 <div class="row mt-2 list-content">
                     <div class="col-7">
-                        Weight
+                        Total Weight
                     </div>
                     <div class="col-5 text-right"><?= $totalweight_all; ?> gr</div>
                 </div>
                 <div class="row mt-2 list-content">
                     <div class="col-7">
-                        Shipping
+                        Total Shipping
                     </div>
                     <div class="col-5 text-right notranslate"><?= msgfmt_format_message("id", $idr, array($shipping_all)); ?></div>
+                </div>
+                <div class="row mt-2 list-content">
+                    <div class="col-7">
+                        Total Additional Costs
+                    </div>
+                    <div class="col-5 text-right notranslate"><?= msgfmt_format_message("id", $idr, array($additionalcost_all)); ?></div>
                     <div class="col-12 my-2">
                         <div class="line-end"></div>
                     </div>
